@@ -1,0 +1,209 @@
+@charset "utf-8";
+
+body{
+    font-family: Arial, Helvetica,"儷黑 pro","微軟正黑體", sans-serif;
+}
+
+img{
+    vertical-align: bottom;
+}
+
+a{
+    outline: none;
+}
+/* helper -----------------------------------------------*/
+/* 隱藏超出可視範圍的頁面，移除滾輪bar */
+.mask{
+    overflow: hidden;
+}
+
+/* overlap----------------------------------------------- */
+/* 設定最外層尺寸(可視範圍)，用以移除垂直的滾輪bar */
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+}
+
+
+/* nav----------------------------------------------------------- */
+.nav{
+    position: fixed;
+    right:1rem;
+    top:50%;
+    margin-top: -116px;
+}
+
+.nav-active{
+    background-color: rgba(0,0,0,.7);
+}
+
+.nav-btn{
+    background-color: #fff;
+    display: block;
+    width: 15px;
+    height: 15px;
+    text-indent: -9999px;
+    margin: 15px;
+    opacity: .7;
+    transition-duration: .3s;
+    box-shadow: 0 0 3px  hsla(0, 0%, 100%, 0.728);
+    /* css合併後，因input新增------------- */
+    /* input本身有邊框 */
+    border: none;
+    /* input:hover不會有pointer，要自己加 */
+    cursor: pointer;
+}
+
+.nav-btn-active, .nav-btn:hover{
+    opacity: 1;
+}
+
+/* 去除當前頁面的超連結點擊效果 */
+.nav-btn-active{
+    pointer-events: none;
+}
+
+.nav-btn-index{
+    background-color: rgb(45, 45, 45);
+}
+
+/* article------------------------------------------------------------- */
+.article{
+    max-width: 950px;
+    padding: 3rem 5rem;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.article-title{
+    line-height: 1.5;
+    font-weight: 600;
+    font-size: 1.3em;
+    text-transform: capitalize;
+}
+
+.article-desc{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+    line-height: 1.2;
+}
+
+/* grid--------------------------------------------------------------- */
+.grid{
+    display: grid;
+    /* grid-template-columns: 33.33333% 33.33333% 33.33333%; */
+    /* gap: 1rem; */
+    gap: 1.5rem;
+}
+
+.grid-2{
+    grid-template-columns: repeat(2, 1fr);
+}
+.grid-3{
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* 把每分頁間的gap刪除 */
+.grid-slide{
+    gap:0;
+}
+
+.grid-item{
+    width: 100vw;
+    height: 100vh;
+}
+
+.grid-item-ac{
+    background-color: #333;
+}
+.grid-item-pr{
+    background-color: #dd1f8e;
+}
+.grid-item-ps{
+    background-color: #00a7e2;
+}
+.grid-item-ae{
+    background-color: #620294;
+}
+.grid-item-ai{
+    background-color: #ee9a10;
+}
+.grid-item-dw{
+    background-color:#84c922 ;
+}
+
+/* card------------------------------------------------ */
+
+.card-img{
+    width: 100%;
+    height: auto;
+}
+
+.card{
+    position: relative;
+    -webkit-box-reflect:below -1px linear-gradient(to top, rgba(0,0,0,.3) 0%, transparent 50%);
+}
+
+.card-body{
+    position: absolute;
+    top: 0;
+    left:0;
+    background-color:rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/* module:hover---------------------------------------------- */
+
+.hover-fade-in .card-body{
+    opacity:0;
+    transition-duration: .3s;
+}
+
+.hover-fade-in:hover .card-body{
+    opacity: 1;
+}
+
+.hover-zoom-in .fas{
+    transform: scale(0);
+    transition-duration: .3s;
+}
+
+.hover-zoom-in:hover .fas{
+    transform: scale(1);
+}
+
+
+
+@media screen and (max-width:1024px) {
+    .article{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .article{
+        /* background-color: aqua; */
+        width: auto;
+        padding: 4rem 2rem 2rem;
+    }
+    .article-title{
+        text-align: center;
+    }
+    .nav{
+        top:0;
+        left:0;
+        margin-top:0;
+        display: flex;
+        justify-content: center;
+        /* 檢查有無放滿 */
+        /* background-color: #c07777; */
+        width: 100%;
+        z-index: 10;
+    }
+}
