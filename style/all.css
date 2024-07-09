@@ -31,6 +31,8 @@ a{
     right:1rem;
     top:50%;
     margin-top: -116px;
+    /* 深度往上提高 */
+    z-index: 10;
 }
 
 .nav-active{
@@ -44,9 +46,8 @@ a{
     height: 15px;
     text-indent: -9999px;
     margin: 15px;
-    opacity: .7;
+    opacity: .5;
     transition-duration: .3s;
-    box-shadow: 0 0 3px  hsla(0, 0%, 100%, 0.728);
     /* css合併後，因input新增------------- */
     /* input本身有邊框 */
     border: none;
@@ -54,12 +55,16 @@ a{
     cursor: pointer;
 }
 
-.nav-btn-active, .nav-btn:hover{
+/* 新擬態選取器！！disabled */
+/* 只有屬性有套disabled的適用該擬態選取器 */
+.nav-btn:disabled, .nav-btn:hover{
     opacity: 1;
 }
 
+/* 新擬態選取器！！disabled */
+/* 只有屬性有套disabled的適用該擬態選取器 */
 /* 去除當前頁面的超連結點擊效果 */
-.nav-btn-active{
+.nav-btn:disabled{
     pointer-events: none;
 }
 
@@ -107,11 +112,22 @@ a{
 /* 把每分頁間的gap刪除 */
 .grid-slide{
     gap:0;
+    transition: .7s;
+    transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 .grid-item{
     width: 100vw;
     height: 100vh;
+    /* 新增overflow：auto內容過多時，會形成scrollbar */
+    /* 若沒有加overflow，內容過多時，會看不見(因vh設定+mask hidden設定)、會干擾到下面的分頁顯示內容 */
+    overflow: auto;
+}
+
+/* 搭配.grid-item的overflow:auto，用此webkit將醜醜的scrollbar隱藏 */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.grid-item::-webkit-scrollbar{
+    display: none;
 }
 
 .grid-item-ac{
